@@ -1,154 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calculadora Laboral</title>
-    <!-- Vinculamos el archivo CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Fuente Old English -->
-    <link href="https://fonts.googleapis.com/css2?family=Gloock:wght@700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/ico" href="assets/pagina.ico">
+    <link rel="icon" href="path-to-your-icon.ico">
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #2e2e2e;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .input-field {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #444;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #FF8C00;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .faq-section {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            margin: 10px 0;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            color: #FF8C00;
+            font-size: 18px;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .active .faq-answer {
+            display: block;
+        }
+
+        .error-message {
+            color: #FF8C00;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Contenedor principal -->
+
     <div class="container">
-        <!-- Sección de Introducción -->
-        <section class="intro">
-            <h1>🧑‍💻 Calculadora Laboral</h1>
-            <p>Convierte tus horas de trabajo en salario o averigua tu tiempo invertido en el trabajado, tanto semanal, como mensualmente, y muchas opciones más. Solo ingresa los datos solicitados y obtendrás el resultado en tiempo real. 
-                ¡Fácil, práctico y al instante!</p>
-        </section>
+        <h1>Calculadora Laboral</h1>
+        
+        <div class="input-field">
+            <label for="horasPorDia">Horas por día:</label>
+            <input type="number" id="horasPorDia" placeholder="Ejemplo: 8">
+        </div>
+        
+        <div class="input-field">
+            <label for="diasPorSemana">Días por semana:</label>
+            <input type="number" id="diasPorSemana" placeholder="Ejemplo: 5">
+        </div>
 
-        <!-- Sección de Ingresar Datos -->
-        <section class="formulario">
-            <h2>Ingresá tus datos laborales</h2>
-            <form>
-    <div class="input-container">
-        <label for="horasPorDia">⏰ Horas trabajadas al día:</label>
-        <input type="number" id="horasPorDia" placeholder="Ejemplo: 9">
-        <p>¿Cuántas horas trabajás cada día?</p>
+        <div class="input-field">
+            <label for="salarioMensual">Salario mensual:</label>
+            <input type="number" id="salarioMensual" placeholder="Ejemplo: 30000">
+        </div>
+
+        <div class="input-field">
+            <label for="salarioHora">Valor por hora:</label>
+            <input type="number" id="salarioHora" placeholder="Ejemplo: 150">
+        </div>
+
+        <button onclick="calcularDatosLaborales()">Calcular</button>
+
+        <div id="resultado" class="result"></div>
     </div>
 
-    <div class="input-container">
-        <label for="diasPorSemana">📅 Días trabajados por semana:</label>
-        <input type="number" id="diasPorSemana" placeholder="Ejemplo: 5">
-        <p>¿Cuántos días trabajás a la semana?</p>
-    </div>
-
-    <div class="input-container">
-        <label for="salarioMensual">💸 Salario mensual neto:</label>
-        <input type="number" id="salarioMensual" placeholder="Ejemplo: 500000">
-        <p>Tu salario mensual después de impuestos.</p>
-    </div>
-
-    <div class="input-container">
-        <label for="salarioHora">💰 Valor por hora:</label>
-        <input type="number" id="salarioHora" placeholder="Ejemplo: 1500">
-        <p>¿Cuánto ganas por cada hora trabajada?</p>
-    </div>
-
-    <div class="input-container">
-        <label for="horasObjetivo">🎯 ¿Cuánto querés ganar?</label>
-        <input type="number" id="horasObjetivo" placeholder="Ejemplo: 250000">
-        <p>Ingresá un monto y calculamos cuántas horas necesitas laburar para llegar.</p>
-    </div>
-
-    <div class="input-container">
-        <label for="turnosRotativos">🔁 Turnos personalizados (horas por día separadas por coma):</label>
-        <input type="text" id="turnosRotativos" placeholder="Ejemplo: 9,9,9,6,6">
-        <p>Ideal si trabajás distintos turnos en la semana.</p>
-    </div>
-
-    <div class="input-container">
-        <label for="modalidadPago">💼 Modalidad de pago:</label>
-        <select id="modalidadPago">
-            <option value="mensual">Mensual</option>
-            <option value="semanal">Semanal</option>
-            <option value="quincenal">Quincenal</option>
-            <option value="diario">Por día</option>
-            <option value="freelance">Freelance</option>
-        </select>
-        <p>¿Cómo te pagan? Esto afecta el cálculo estimado mensual.</p>
-    </div>
-
-    <button type="button" onclick="calcularDatosLaborales()">Calcular</button>
-    <button type="button" onclick="guardarResultados()">Guardar Resultado</button>
-</form>
-        </section>
-
-        <!-- Sección de Resultados -->
-        <section class="resultados">
-            <h2>Resultados:</h2>
-            <div id="resultado">
-                <!-- Aquí se mostrarán los resultados -->
-            </div>
-        </section>
-
-<!-- Sección de Preguntas Frecuentes -->
-<section class="faq">
-    <h2>Preguntas Frecuentes</h2>
-
-    <div class="faq-item">
-        <button class="faq-question">
-            ¿Cómo puedo calcular mi salario semanal?
-            <span class="arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Para calcular tu salario semanal, sólo necesitas ingresar las horas que trabajas cada día y los días
-                trabajados por semana. La calculadora hará el resto del trabajo por ti.</p>
+    <div class="container faq-section">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo calculo el salario por hora?</div>
+            <div class="faq-answer">El salario por hora se puede calcular dividiendo el salario mensual entre el total de horas trabajadas en el mes.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo estimar el salario mensual desde el valor de la hora?</div>
+            <div class="faq-answer">Para estimar el salario mensual, multiplica el valor de la hora por el total de horas trabajadas al mes.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">¿Cuántas horas trabajo en un mes?</div>
+            <div class="faq-answer">El total de horas trabajadas al mes se obtiene multiplicando las horas trabajadas por semana por 4.33 (promedio de semanas por mes).</div>
         </div>
     </div>
 
-    <div class="faq-item">
-        <button class="faq-question">
-            ¿Puedo usar esta calculadora si trabajo medio tiempo?
-            <span class="arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>¡Por supuesto! Puedes ingresar cualquier número de horas y días que trabajes, incluso si es menos de la
-                jornada estándar.</p>
-        </div>
-    </div>
+    <!-- Créditos debajo -->
+    <footer>
+        <p>&copy; ARES / 2025</p>
+    </footer>
 
-    <div class="faq-item">
-        <button class="faq-question">
-            ¿El salario por hora se calcula automáticamente?
-            <span class="arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Sí, si tienes tu salario mensual, la calculadora calculará automáticamente tu salario por hora basado en
-                el número de horas trabajadas por semana.</p>
-        </div>
-    </div>
+    <script>
+        // 🧠 Validación: chequea si el input es un número válido
+        function esNumero(valor) {
+            return !isNaN(valor) && valor.trim() !== "";
+        }
 
-    <div class="faq-item">
-        <button class="faq-question">
-            ¿Qué hago si no tengo información sobre mi salario mensual?
-            <span class="arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Si no tienes esta información, puedes ingresar únicamente el valor de tu salario por hora, y la
-                calculadora estimará tu salario mensual y semanal basado en ese valor.</p>
-        </div>
-    </div>
-</section>
+        // 💼 Función principal: Calcula los datos laborales
+        function calcularDatosLaborales() {
+            const horasPorDia = document.getElementById("horasPorDia").value;
+            const diasPorSemana = document.getElementById("diasPorSemana").value;
+            const salarioMensual = document.getElementById("salarioMensual").value;
+            const salarioHora = document.getElementById("salarioHora").value;
 
-        <!-- Sección de Información adicional -->
-        <section class="acerca">
-            <h2>Sobre Mi</h2>
-            <p>Proyecto creado por <strong><a href="https://aresxarg.github.io/" target="_blank">Alejo/ARESxARG</a></strong>, con el objetivo de ayudar a las personas a calcular
-                su salario en función de las horas trabajadas. ¡Gracias por utilizar esta herramienta!</p>
-        </section>
-    </div>
-    
-<div class="creditos">© ARES / 2025</div>
+            let resultadoHTML = "";
 
-    <!-- Vinculamos el archivo JavaScript -->
-    <script src="script.js"></script>
+            // 🧮 Parseo y validación
+            const horasDia = esNumero(horasPorDia) ? parseFloat(horasPorDia) : null;
+            const diasSemana = esNumero(diasPorSemana) ? parseFloat(diasPorSemana) : null;
+            const sueldoMensual = esNumero(salarioMensual) ? parseFloat(salarioMensual) : null;
+            const valorHora = esNumero(salarioHora) ? parseFloat(salarioHora) : null;
+
+            const horasSemanales = (horasDia && diasSemana) ? horasDia * diasSemana : null;
+            const horasMensuales = (horasSemanales) ? horasSemanales * 4.33 : null;
+
+            // 🧮 Validar que haya al menos dos campos completos
+            if ((!horasDia && !diasSemana && !salarioMensual && !salarioHora) || 
+                (horasDia && !diasSemana && !salarioHora) ||
+                (!horasDia && diasSemana && !salarioHora) ||
+                (!horasDia && !diasSemana && salarioHora)) {
+                resultadoHTML = `<p class="error-message">⚠️ Faltan datos para realizar cálculos. Completá al menos dos campos.</p>`;
+            } else {
+                // ⏱️ Mostrar horas trabajadas
+                if (horasSemanales) {
+                    resultadoHTML += `<p>🕒 Horas semanales: <strong>${horasSemanales}</strong></p>`;
+                }
+
+                if (horasMensuales) {
+                    resultadoHTML += `<p>🗓️ Horas mensuales: <strong>${horasMensuales.toFixed(2)}</strong></p>`;
+                }
+
+                // 💸 Calcular salario por hora a partir del mensual
+                if (sueldoMensual && horasMensuales) {
+                    const sueldoCalculadoPorHora = (sueldoMensual / horasMensuales).toFixed(2);
+                    resultadoHTML += `<p>💰 Salario real por hora (basado en sueldo mensual): <strong>$${sueldoCalculadoPorHora}</strong></p>`;
+                }
+
+                // 📆 Estimar salario mensual desde valor por hora
+                if (valorHora && horasMensuales) {
+                    const sueldoEstimadoMensual = (valorHora * horasMensuales).toFixed(2);
+                    resultadoHTML += `<p>📆 Estimación de salario mensual según valor hora: <strong>$${sueldoEstimadoMensual}</strong></p>`;
+                }
+
+                // 📅 Estimar salario semanal desde valor por hora
+                if (valorHora && horasSemanales) {
+                    const sueldoEstimadoSemanal = (valorHora * horasSemanales).toFixed(2);
+                    resultadoHTML += `<p>📅 Estimación de salario semanal según valor hora: <strong>$${sueldoEstimadoSemanal}</strong></p>`;
+                }
+            }
+
+            // Mostrar resultados
+            document.getElementById("resultado").innerHTML = resultadoHTML;
+        }
+
+        // ❓ FAQ tipo acordeón
+        document.addEventListener("DOMContentLoaded", function () {
+            const preguntas = document.querySelectorAll(".faq-question");
+
+            preguntas.forEach((pregunta) => {
+                pregunta.addEventListener("click", function () {
+                    const item = this.parentElement;
+
+                    // Cierra otros items activos
+                    document.querySelectorAll(".faq-item.active").forEach((activo) => {
+                        if (activo !== item) {
+                            activo.classList.remove("active");
+                        }
+                    });
+
+                    // Alterna el actual
+                    item.classList.toggle("active");
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
