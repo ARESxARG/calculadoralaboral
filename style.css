@@ -227,3 +227,11 @@ button:hover {
 .faq-item.active .arrow {
     transform: rotate(180deg);
 }
+
+.creditos {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+    text-align: center;
+    font-style: italic;
+}
