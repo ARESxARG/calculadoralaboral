@@ -53,3 +53,24 @@ function calcularDatosLaborales() {
 
   document.getElementById("resultado").innerHTML = resultadoHTML;
 }
+
+// Acordeón de preguntas frecuentes
+document.addEventListener("DOMContentLoaded", function () {
+  const preguntas = document.querySelectorAll(".faq-question");
+
+  preguntas.forEach((pregunta) => {
+    pregunta.addEventListener("click", function () {
+      const item = this.parentElement;
+
+      // Cierra otros items activos
+      document.querySelectorAll(".faq-item.active").forEach((activo) => {
+        if (activo !== item) {
+          activo.classList.remove("active");
+        }
+      });
+
+      // Alterna la clase 'active' en el clic actual
+      item.classList.toggle("active");
+    });
+  });
+});
