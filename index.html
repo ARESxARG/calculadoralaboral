@@ -27,32 +27,57 @@
         <section class="formulario">
             <h2>Ingresá tus datos laborales</h2>
             <form>
-                <div class="input-container">
-                    <label for="horasPorDia">⏰ Horas trabajadas al día:</label>
-                    <input type="number" id="horasPorDia" placeholder="Ejemplo: 9" required>
-                    <p>¿Cuántas horas trabajás cada día?</p>
-                </div>
+    <div class="input-container">
+        <label for="horasPorDia">⏰ Horas trabajadas al día:</label>
+        <input type="number" id="horasPorDia" placeholder="Ejemplo: 9">
+        <p>¿Cuántas horas trabajás cada día?</p>
+    </div>
 
-                <div class="input-container">
-                    <label for="diasPorSemana">📅 Días trabajados por semana:</label>
-                    <input type="number" id="diasPorSemana" placeholder="Ejemplo: 5" required>
-                    <p>¿Cuántos días trabajás a la semana?</p>
-                </div>
+    <div class="input-container">
+        <label for="diasPorSemana">📅 Días trabajados por semana:</label>
+        <input type="number" id="diasPorSemana" placeholder="Ejemplo: 5">
+        <p>¿Cuántos días trabajás a la semana?</p>
+    </div>
 
-                <div class="input-container">
-                    <label for="salarioMensual">💸 Salario mensual neto:</label>
-                    <input type="number" id="salarioMensual" placeholder="Ejemplo: 500000" required>
-                    <p>Tu salario mensual después de impuestos.</p>
-                </div>
+    <div class="input-container">
+        <label for="salarioMensual">💸 Salario mensual neto:</label>
+        <input type="number" id="salarioMensual" placeholder="Ejemplo: 500000">
+        <p>Tu salario mensual después de impuestos.</p>
+    </div>
 
-                <div class="input-container">
-                    <label for="salarioHora">💰 Valor por hora:</label>
-                    <input type="number" id="salarioHora" placeholder="Ejemplo: 1500" required>
-                    <p>¿Cuánto ganas por cada hora trabajada?</p>
-                </div>
+    <div class="input-container">
+        <label for="salarioHora">💰 Valor por hora:</label>
+        <input type="number" id="salarioHora" placeholder="Ejemplo: 1500">
+        <p>¿Cuánto ganas por cada hora trabajada?</p>
+    </div>
 
-                <button type="button" onclick="calcularDatosLaborales()">Calcular</button>
-            </form>
+    <div class="input-container">
+        <label for="horasObjetivo">🎯 ¿Cuánto querés ganar?</label>
+        <input type="number" id="horasObjetivo" placeholder="Ejemplo: 250000">
+        <p>Ingresá un monto y calculamos cuántas horas necesitas laburar para llegar.</p>
+    </div>
+
+    <div class="input-container">
+        <label for="turnosRotativos">🔁 Turnos personalizados (horas por día separadas por coma):</label>
+        <input type="text" id="turnosRotativos" placeholder="Ejemplo: 9,9,9,6,6">
+        <p>Ideal si trabajás distintos turnos en la semana.</p>
+    </div>
+
+    <div class="input-container">
+        <label for="modalidadPago">💼 Modalidad de pago:</label>
+        <select id="modalidadPago">
+            <option value="mensual">Mensual</option>
+            <option value="semanal">Semanal</option>
+            <option value="quincenal">Quincenal</option>
+            <option value="diario">Por día</option>
+            <option value="freelance">Freelance</option>
+        </select>
+        <p>¿Cómo te pagan? Esto afecta el cálculo estimado mensual.</p>
+    </div>
+
+    <button type="button" onclick="calcularDatosLaborales()">Calcular</button>
+    <button type="button" onclick="guardarResultados()">Guardar Resultado</button>
+</form>
         </section>
 
         <!-- Sección de Resultados -->
