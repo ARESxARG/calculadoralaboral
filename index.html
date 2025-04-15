@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora Laboral</title>
+    <!-- Vinculamos el archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente Old English -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloock:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Sección de Introducción -->
+        <section class="intro">
+            <h1>🧑‍💻 Calculadora Laboral</h1>
+            <p>Bienvenido a la calculadora laboral. Aquí podrás convertir tus horas de trabajo en salario, tanto por
+                semana como por mes. Solo ingresa los datos solicitados y obtendrás el resultado en tiempo real. ¡Fácil,
+                rápido y útil!</p>
+        </section>
+
+        <!-- Sección de Ingresar Datos -->
+        <section class="formulario">
+            <h2>Ingresá tus datos laborales</h2>
+            <form>
+                <div class="input-container">
+                    <label for="horasPorDia">⏰ Horas trabajadas al día:</label>
+                    <input type="number" id="horasPorDia" placeholder="Ejemplo: 9" required>
+                    <p>¿Cuántas horas trabajás cada día?</p>
+                </div>
+
+                <div class="input-container">
+                    <label for="diasPorSemana">📅 Días trabajados por semana:</label>
+                    <input type="number" id="diasPorSemana" placeholder="Ejemplo: 5" required>
+                    <p>¿Cuántos días trabajás a la semana?</p>
+                </div>
+
+                <div class="input-container">
+                    <label for="salarioMensual">💸 Salario mensual neto:</label>
+                    <input type="number" id="salarioMensual" placeholder="Ejemplo: 500000" required>
+                    <p>Tu salario mensual después de impuestos.</p>
+                </div>
+
+                <div class="input-container">
+                    <label for="salarioHora">💰 Valor por hora:</label>
+                    <input type="number" id="salarioHora" placeholder="Ejemplo: 1500" required>
+                    <p>¿Cuánto ganas por cada hora trabajada?</p>
+                </div>
+
+                <button type="button" onclick="calcularDatosLaborales()">Calcular</button>
+            </form>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section class="resultados">
+            <h2>Resultados:</h2>
+            <div id="resultado">
+                <!-- Aquí se mostrarán los resultados -->
+            </div>
+        </section>
+
+        <!-- Sección de Información adicional -->
+        <section class="acerca">
+            <h2>Sobre el Creador:</h2>
+            <p>Este proyecto fue creado por <strong>Alejo</strong>, con el objetivo de ayudar a las personas a calcular
+                su salario en función de las horas trabajadas. ¡Gracias por utilizar esta herramienta!</p>
+        </section>
+    </div>
+
+    <!-- Vinculamos el archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
